@@ -62,3 +62,11 @@
   .white{
     color: white
   }
+
+  .shadow{
+    shadow: 3px 3px gray
+}
+
+.pad{
+  padding: 10px;
+}
