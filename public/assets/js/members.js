@@ -14,18 +14,12 @@ $(document).ready(function () {
                 // append them all to a table to view
                 $("#results").empty();
                 for (let i = 0; i < response.length; i++) {
-                    let name = response[i].exerName
-                    let primary = response[i].main
-                    let secondary = response[i].alternate
-                    let auxillary = response[i].auxillary
-                    let requires = response[i].equipment
-                    console.log(name, primary, secondary, auxillary, requires)
                     $("#results").append(`<tr>
-                    <td scope="col">${name}</td>
-                    <td scope="col">${primary}</td>
-                    <td scope="col">${secondary}</td>
-                    <td scope="col">${auxillary}</td>
-                    <td scope="col">${requires}</td>
+                    <td scope="col">${response[i].exerName}</td>
+                    <td scope="col">${response[i].main}</td>
+                    <td scope="col">${response[i].alternate}</td>
+                    <td scope="col">${response[i].auxillary}</td>
+                    <td scope="col">${response[i].equipment}</td>
                     </tr>`);
                 }
             }

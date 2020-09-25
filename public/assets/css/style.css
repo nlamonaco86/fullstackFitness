@@ -54,9 +54,7 @@
   }
 
   .padtop {
-    top: 0%;
-    left: 100%;
-    transform: translate(-95%, 2%)
+    padding-top: 15px;
   }
 
   .white{

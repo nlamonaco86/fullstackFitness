@@ -45,81 +45,94 @@
             </ul>
         </div>
     </nav>
-   
-<section class="container">
-    <div class="d-flex justify-content-start">
-        <div class="col-lg-4 bg-form shadow">
-            <form class="search">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Search Exercises by Muscle Group</label>
-                    <input type="text" class="form-control" id="muscle">
-                </div>
-                <button type="submit" class="btn-lg btn-warning">Submit</button>
-            </form>
-        </div>
-    </div>
-    <table class="table shadow">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Exercise</th>
-            <th scope="col">Primary</th>
-            <th scope="col">Secondary</th>
-            <th scope="col">Auxillary</th>
-            <th scope="col">Requires</th>
-          </tr>
-        </thead>
-        <tbody class="bg-form" id="results">
-          <tr>
-            <td scope="col">Exercise</td>
-            <td scope="col">Primary</td>
-            <td scope="col">Secondary</td>
-            <td scope="col">Auxillary</td>
-            <td scope="col">Requires</td>
-          </tr>
-        </tbody>
-    </table>
 
-    <!-- Add to exercise database -->
-    <div class="d-flex justify-content-center">
-    <div class="col-lg-6 bg-form shadow">
-    <form class="add">
-        <div class="form-group">
-          <label for="name">Exercise Name:</label>
-          <input type="text" class="form-control shadow" id="exerName">
+    <section class="container">
+        <h1 class="display-4">Exercise Database</h3>
+        <h2 class="lead">Search our extensive database for exercises based on your preferences.</h3>
+        <div class="row padtop">
+            <div class="col-lg-4 bg-form shadow">
+                <form class="search">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Search exercises by muscle group:</label>
+                        <select class="form-control" id="muscle">
+                          <option>Chest</option>
+                          <option>Back</option>
+                          <option>Quad</option>
+                          <option>Ham</option>
+                          <option>Core</option>
+                          <option>Bicep</option>
+                          <option>Tricep</option>
+                          <option>Calves</option>
+                          <option>Front Delt</option>
+                          <option>Side Delt</option>
+                          <option>Rear Delt</option>
+                          <option>Glute</option>
+                        </select>
+                      </div>
+                    <!-- <div class="form-group">
+                        <label for="exampleInputEmail1">Search Exercises by Muscle Group</label>
+                        <input type="text" class="form-control" id="muscle">
+                    </div> -->
+                    <button type="submit" class="btn-lg btn-warning">Submit</button>
+                </form>
+            </div>
+
+            <table class="table shadow col-lg-8">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Exercise</th>
+                        <th scope="col">Primary</th>
+                        <th scope="col">Secondary</th>
+                        <th scope="col">Auxillary</th>
+                        <th scope="col">Requires</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-form" id="results">
+                </tbody>
+            </table>
         </div>
-        <div class="form-group">
-            <label for="main">Main:</label>
-            <input type="text" class="form-control shadow" id="main">
-          </div>
-          <div class="form-group">
-            <label for="alternate">Alternate</label>
-            <input type="text" class="form-control shadow" id="alternate">
-          </div>
-          <div class="form-group">
-            <label for="auxillary">Auxillary:</label>
-            <input type="text" class="form-control shadow" id="auxillary">
-          </div>
-          <div class="form-group">
-            <label for="equipment">Equipment:</label>
-            <input type="text" class="form-control shadow" id="equipment">
-          </div>
-          <div class="form-group">
-            <label for="upper">Upper:</label>
-            <input type="upper" class="form-control shadow" id="upper">
-          </div>
-          <div class="form-group">
-            <label for="push">Push:</label>
-            <input type="number" class="form-control shadow" id="push">
-          </div>
-          <div class="form-group">
-            <label for="compound">Compound:</label>
-            <input type="number" class="form-control shadow" id="compound">
-          </div>
-        <button type="submit" class="btn-lg btn-warning shadow display-4">Add Exercise</button>
-      </form>
-    </div>
-</div>
-</section>
+
+        <!-- Add to exercise database -->
+        <div class="d-flex justify-content-center">
+            <div class="col-lg-6 bg-form shadow">
+                <form class="add">
+                    <div class="form-group">
+                        <label for="name">Exercise Name:</label>
+                        <input type="text" class="form-control shadow" id="exerName">
+                    </div>
+                    <div class="form-group">
+                        <label for="main">Main:</label>
+                        <input type="text" class="form-control shadow" id="main">
+                    </div>
+                    <div class="form-group">
+                        <label for="alternate">Alternate</label>
+                        <input type="text" class="form-control shadow" id="alternate">
+                    </div>
+                    <div class="form-group">
+                        <label for="auxillary">Auxillary:</label>
+                        <input type="text" class="form-control shadow" id="auxillary">
+                    </div>
+                    <div class="form-group">
+                        <label for="equipment">Equipment:</label>
+                        <input type="text" class="form-control shadow" id="equipment">
+                    </div>
+                    <div class="form-group">
+                        <label for="upper">Upper:</label>
+                        <input type="upper" class="form-control shadow" id="upper">
+                    </div>
+                    <div class="form-group">
+                        <label for="push">Push:</label>
+                        <input type="number" class="form-control shadow" id="push">
+                    </div>
+                    <div class="form-group">
+                        <label for="compound">Compound:</label>
+                        <input type="number" class="form-control shadow" id="compound">
+                    </div>
+                    <button type="submit" class="btn-lg btn-warning shadow display-4">Add Exercise</button>
+                </form>
+            </div>
+        </div>
+    </section>
     <!-- Button trigger modal
     <button type="button" class="btn btn-warning pad" data-toggle="modal" data-target="#updateUser">
         Update My Profile
