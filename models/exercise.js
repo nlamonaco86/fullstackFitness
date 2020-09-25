@@ -1,21 +1,21 @@
 // Exercise model
 module.exports = function (sequelize, DataTypes) {
     const Exercise = sequelize.define("Exercise", {
-        name: {
+        exerName: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        primary: {
+        main: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        secondary: {
+        alternate: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         auxillary: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         equipment: {
             type: DataTypes.STRING,
@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             default: false
         },
-        lower: {
+        push: {
             type: DataTypes.BOOLEAN,
             default: false
         },
