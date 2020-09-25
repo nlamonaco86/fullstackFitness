@@ -86,6 +86,44 @@ module.exports = function(app) {
       res.json(exercises);
     });
   });
+
+  app.get("/api/exercises/:muscle/anySecondary/:equipReq", function(req, res) {
+    console.log(req)
+    db.Exercise.findAll({
+      where: {
+        main: req.params.muscle,
+        equipment: req.params.equipReq
+      }
+    })
+    .then( exercises => {
+      res.json(exercises);
+    });
+  });
+
+  app.get("/api/exercises/:muscle/:secondaryMuscle/anyEquip", function(req, res) {
+    db.Exercise.findAll({
+      where: {
+        main: req.params.muscle,
+        alternate: req.params.secondaryMuscle
+      }
+    })
+    .then( exercises => {
+      res.json(exercises);
+    });
+  });
+
+  app.get("/api/exercises/:muscle/:secondaryMuscle/:equipReq", function(req, res) {
+    db.Exercise.findAll({
+      where: {
+        main: req.params.muscle,
+        alternate: req.params.secondaryMuscle,
+        equipment: req.params.equipReq
+      }
+    })
+    .then( exercises => {
+      res.json(exercises);
+    });
+  });
   
 };
 
