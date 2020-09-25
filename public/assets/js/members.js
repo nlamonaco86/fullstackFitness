@@ -1,16 +1,49 @@
 $(document).ready(function () {
-    // Getting references to our form and input
-    let updateForm = $("form.update");
-  
-    // When the signup button is clicked, we validate the email and password are not blank
-    updateForm.on("submit", function (event) {
+    // EXERCISE SEARCH FORM
+    let searchForm = $("form.search")
+
+    searchForm.on("submit", function (event) {
         event.preventDefault();
-        console.log("click")
-    })
+        // console.log("search")
+        let muscle = $("#muscle").val();
+        // search for all exercises where primary muscle = user choice
+        $.ajax("/api/exercises/" + muscle, {
+            type: "GET"
+        }).then(
+            function (response) {
+                // append them all to a table to view
+                $("#results").empty();
+                for (let i = 0; i < response.length; i++) {
+                    let name = response[i].exerName
+                    let primary = response[i].main
+                    let secondary = response[i].alternate
+                    let auxillary = response[i].auxillary
+                    let requires = response[i].equipment
+                    console.log(name, primary, secondary, auxillary, requires)
+                    $("#results").append(`<tr>
+                    <td scope="col">${name}</td>
+                    <td scope="col">${primary}</td>
+                    <td scope="col">${secondary}</td>
+                    <td scope="col">${auxillary}</td>
+                    <td scope="col">${requires}</td>
+                    </tr>`);
+                }
+            }
+        );
+    });
+})
+
+let updateForm = $("form.update");
+// UPDATE PROFILE FORM
+// When the signup button is clicked, we validate the email and password are not blank
+updateForm.on("submit", function (event) {
+    event.preventDefault();
+    console.log("update")
+})
     //   event.preventDefault();
-  
+
     //   $(this).find('input[type=checkbox]:not(:checked)').prop('checked', true).val(0);
-  
+
     //   var userData = {
     //     email: $("input#email-input").val().trim(),
     //     password: $("input#password-input").val().trim(),
@@ -19,9 +52,9 @@ $(document).ready(function () {
     //     universal: $("input#check3").val(),
     //     proficiency: "intermediate"
     //   };
-  
+
     //   console.log(userData)
-  
+
     //   if (!userData.email || !userData.password) {
     //     return;
     //   }
@@ -30,7 +63,7 @@ $(document).ready(function () {
     //   $("input#email-input").val("");
     //   $("input#password-input").val("");
     // });
-  
+
     // // Does a post to the signup route. If successful, we are redirected to the members page
     // // Otherwise we log any errors
     // function signUpUser(email, password, dumbbell, barbell, universal, proficiency) {
@@ -48,9 +81,8 @@ $(document).ready(function () {
     //     })
     //     .catch(handleLoginErr);
     // }
-  
+
     // function handleLoginErr(err) {
     //   $("#alert .msg").text(err.responseJSON);
     //   $("#alert").fadeIn(500);
     // }
-  });

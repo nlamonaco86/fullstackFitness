@@ -34,25 +34,7 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
-  // add an exercise to the database (admin only eventually)
-  app.post("/api/exercises", function(req, res) {
-    db.Exercise.create({
-      exerName: req.body.exerName,
-      main: req.body.main,
-      alternate: req.body.alternate,
-      auxillary: req.body.auxillary,
-      equipment: req.body.equipment,
-      upper: req.body.upper,
-      push: req.body.push,
-      compound: req.body.compound
-    })
-      .then(function() {
-        console.log(res)
-      })
-      .catch(function(err) {
-        res.status(401).json(err);
-      });
-  });
+
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();
@@ -73,6 +55,38 @@ module.exports = function(app) {
       });
     }
   });
+  // ********************************** EXERCISES ******************************************** //
+  // add an exercise to the database (admin only, eventually)
+  app.post("/api/exercises", function(req, res) {
+    db.Exercise.create({
+      exerName: req.body.exerName,
+      main: req.body.main,
+      alternate: req.body.alternate,
+      auxillary: req.body.auxillary,
+      equipment: req.body.equipment,
+      upper: req.body.upper,
+      push: req.body.push,
+      compound: req.body.compound
+    })
+      .then(function() {
+        console.log(res)
+      })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
+  });
+  // FIND exercises
+  app.get("/api/exercises/:muscle", function(req, res) {
+    db.Exercise.findAll({
+      where: {
+        main: req.params.muscle
+      }
+    })
+    .then( exercises => {
+      res.json(exercises);
+    });
+  });
+  
 };
 
 // // Require models and passport

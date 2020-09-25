@@ -63,6 +63,11 @@
     color: white
   }
 
+  .bg-form{
+    padding: 20px;
+    background-color: white;
+  }
+
   .shadow{
     shadow: 3px 3px gray
 }

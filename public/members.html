@@ -45,12 +45,43 @@
             </ul>
         </div>
     </nav>
-    <!-- Button trigger modal
-    <button type="button" class="btn btn-warning pad" data-toggle="modal" data-target="#updateUser">
-        Update My Profile
-    </button> -->
-<div class="d-flex justify-content-center">
-    <div class="col-lg-6">
+   
+<section class="container">
+    <div class="d-flex justify-content-start">
+        <div class="col-lg-4 bg-form shadow">
+            <form class="search">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Search Exercises by Muscle Group</label>
+                    <input type="text" class="form-control" id="muscle">
+                </div>
+                <button type="submit" class="btn-lg btn-warning">Submit</button>
+            </form>
+        </div>
+    </div>
+    <table class="table shadow">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Exercise</th>
+            <th scope="col">Primary</th>
+            <th scope="col">Secondary</th>
+            <th scope="col">Auxillary</th>
+            <th scope="col">Requires</th>
+          </tr>
+        </thead>
+        <tbody class="bg-form" id="results">
+          <tr>
+            <td scope="col">Exercise</td>
+            <td scope="col">Primary</td>
+            <td scope="col">Secondary</td>
+            <td scope="col">Auxillary</td>
+            <td scope="col">Requires</td>
+          </tr>
+        </tbody>
+    </table>
+
+    <!-- Add to exercise database -->
+    <div class="d-flex justify-content-center">
+    <div class="col-lg-6 bg-form shadow">
     <form class="add">
         <div class="form-group">
           <label for="name">Exercise Name:</label>
@@ -88,10 +119,11 @@
       </form>
     </div>
 </div>
-
-
-
-
+</section>
+    <!-- Button trigger modal
+    <button type="button" class="btn btn-warning pad" data-toggle="modal" data-target="#updateUser">
+        Update My Profile
+    </button> -->
 
     <!-- Update Profile Modal -->
     <div class="modal fade" id="updateUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
