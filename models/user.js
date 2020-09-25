@@ -17,7 +17,23 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },
+    dumbbell: {
+      type: DataTypes.BOOLEAN,
+      default: false
+    },
+    barbell: {
+      type: DataTypes.BOOLEAN,
+      default: false
+    },
+    universal: {
+      type: DataTypes.BOOLEAN,
+      default: false
+    },
+    proficiency: {
+      type: DataTypes.STRING,
+      default: "beginner"
+    },
   });
   // Creating a custom method for User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in the database
   User.prototype.validPassword = function(password) {

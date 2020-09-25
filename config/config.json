@@ -2,7 +2,7 @@
   "nicksPC": {
     "username": "root",
     "password": "Nicky0416!",
-    "database": "repair_db",
+    "database": "fitness_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
