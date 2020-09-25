@@ -2,94 +2,60 @@ $(document).ready(function () {
     // EXERCISE SEARCH FORM
     let searchForm = $("form.search")
 
-    searchForm.on("submit", function (event) {
-        event.preventDefault();
-        // console.log("search")
-        let muscle = $("#muscle").val();
-        let secondaryMuscle = $("#secondaryMuscle").val();
-        let equipReq = $("#equipReq").val();
-        console.log(muscle, secondaryMuscle, equipReq)
+    function appendResults (exercise) {
+        $("#results").empty();
+        for (let i = 0; i < exercise.length; i++) {
+            $("#results").append(`<tr>
+                    <td scope="col">${exercise[i].exerName}</td>
+                    <td scope="col">${exercise[i].main}</td>
+                    <td scope="col">${exercise[i].alternate}</td>
+                    <td scope="col">${exercise[i].auxillary}</td>
+                    <td scope="col">${exercise[i].equipment}</td>
+                    </tr>`);
+        }
+    }
 
-        if (secondaryMuscle === "Any" && equipReq === "Any") {
-            // search for all exercises where primary muscle = user choice
-            $.ajax("/api/exercises/" + muscle, {
-                type: "GET"
-            }).then(
-                function (response) {
-                    // append them all to a table to view
-                    $("#results").empty();
-                    for (let i = 0; i < response.length; i++) {
-                        $("#results").append(`<tr>
-                    <td scope="col">${response[i].exerName}</td>
-                    <td scope="col">${response[i].main}</td>
-                    <td scope="col">${response[i].alternate}</td>
-                    <td scope="col">${response[i].auxillary}</td>
-                    <td scope="col">${response[i].equipment}</td>
-                    </tr>`);
-                    }
-                }
-            )
-        };
-        // this one doesn't work, why not?
-        if (secondaryMuscle != "Any" && equipReq === "Any"){
-            $.ajax("/api/exercises/" + muscle + "/" + secondaryMuscle + "/anyEquip", {
-                type: "GET"
-            }).then(
-                function (response) {
-                    // append them all to a table to view
-                    $("#results").empty();
-                    for (let i = 0; i < response.length; i++) {
-                        $("#results").append(`<tr>
-                    <td scope="col">${response[i].exerName}</td>
-                    <td scope="col">${response[i].main}</td>
-                    <td scope="col">${response[i].alternate}</td>
-                    <td scope="col">${response[i].auxillary}</td>
-                    <td scope="col">${response[i].equipment}</td>
-                    </tr>`);
-                    }
-                }
-            )
-        }
-        if (secondaryMuscle === "Any" && equipReq != "Any"){
-            $.ajax("/api/exercises/" + muscle + "/anySecondary/" + equipReq, {
-                type: "GET"
-            }).then(
-                function (response) {
-                    // append them all to a table to view
-                    $("#results").empty();
-                    for (let i = 0; i < response.length; i++) {
-                        $("#results").append(`<tr>
-                    <td scope="col">${response[i].exerName}</td>
-                    <td scope="col">${response[i].main}</td>
-                    <td scope="col">${response[i].alternate}</td>
-                    <td scope="col">${response[i].auxillary}</td>
-                    <td scope="col">${response[i].equipment}</td>
-                    </tr>`);
-                    }
-                }
-            )
-        }
-        if (secondaryMuscle != "Any" && equipReq != "Any"){
-            $.ajax("/api/exercises/" + muscle + "/" + secondaryMuscle + "/" + equipReq, {
-                type: "GET"
-            }).then(
-                function (response) {
-                    // append them all to a table to view
-                    $("#results").empty();
-                    for (let i = 0; i < response.length; i++) {
-                        $("#results").append(`<tr>
-                    <td scope="col">${response[i].exerName}</td>
-                    <td scope="col">${response[i].main}</td>
-                    <td scope="col">${response[i].alternate}</td>
-                    <td scope="col">${response[i].auxillary}</td>
-                    <td scope="col">${response[i].equipment}</td>
-                    </tr>`);
-                    }
-                }
-            )
-        }
-    });
-})
+        searchForm.on("submit", function (event) {
+            event.preventDefault();
+            // console.log("search")
+            let muscle = $("#muscle").val();
+            let secondaryMuscle = $("#secondaryMuscle").val();
+            let equipReq = $("#equipReq").val();
+            console.log(muscle, secondaryMuscle, equipReq)
+
+            if (secondaryMuscle === "Any" && equipReq === "Any") {
+                // search for all exercises where primary muscle = user choice
+                $.ajax("/api/exercises/" + muscle, {
+                    type: "GET"
+                }).then(function (response) {
+                    appendResults(response)
+                });
+            };
+            // this one doesn't work, why not?
+            if (secondaryMuscle != "Any" && equipReq === "Any") {
+                $.ajax("/api/exercises/" + muscle + "/" + secondaryMuscle + "/anyEquip", {
+                    type: "GET"
+                }).then(function (response) {
+                    appendResults(response)
+                });
+            }
+            if (secondaryMuscle === "Any" && equipReq != "Any") {
+                $.ajax("/api/exercises/" + muscle + "/anySecondary/" + equipReq, {
+                    type: "GET"
+                }).then(function (response) {
+                    appendResults(response)
+                });
+            }
+            if (secondaryMuscle != "Any" && equipReq != "Any") {
+                $.ajax("/api/exercises/" + muscle + "/" + secondaryMuscle + "/" + equipReq, {
+                    type: "GET"
+                }).then(function (response) {
+                    appendResults(response)
+                });
+            }
+        });
+    }
+)
 
 let updateForm = $("form.update");
 // UPDATE PROFILE FORM
