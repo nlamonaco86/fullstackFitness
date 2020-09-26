@@ -13,6 +13,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    height: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    weight: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
     goal: {
       type: DataTypes.STRING,
       allowNull: false

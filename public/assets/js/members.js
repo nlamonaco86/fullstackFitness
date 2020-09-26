@@ -1,61 +1,70 @@
-$(document).ready(function () {
-    // EXERCISE SEARCH FORM
-    let searchForm = $("form.search")
+// GET user info on page load
+function personalizePage(){
+$.ajax("/api/user_data/", {
+    type: "GET"
+}).then(function (response) {
+        $.ajax("api/personalize/" + response.id, {
+        type: "GET"
+    }).then(function(response){
+        console.log(response)
+    })
+});
+}
+personalizePage();
 
-    function appendResults (exercise) {
-        $("#results").empty();
-        for (let i = 0; i < exercise.length; i++) {
-            $("#results").append(`<tr>
+// EXERCISE SEARCH FORM
+let searchForm = $("form.search")
+
+function appendResults(exercise) {
+    $("#results").empty();
+    for (let i = 0; i < exercise.length; i++) {
+        $("#results").append(`<tr>
                     <td scope="col">${exercise[i].exerName}</td>
                     <td scope="col">${exercise[i].main}</td>
                     <td scope="col">${exercise[i].alternate}</td>
                     <td scope="col">${exercise[i].auxillary}</td>
                     <td scope="col">${exercise[i].equipment}</td>
                     </tr>`);
-        }
     }
+}
 
-        searchForm.on("submit", function (event) {
-            event.preventDefault();
-            // console.log("search")
-            let muscle = $("#muscle").val();
-            let secondaryMuscle = $("#secondaryMuscle").val();
-            let equipReq = $("#equipReq").val();
-            console.log(muscle, secondaryMuscle, equipReq)
+searchForm.on("submit", function (event) {
+    event.preventDefault();
 
-            if (secondaryMuscle === "Any" && equipReq === "Any") {
-                // search for all exercises where primary muscle = user choice
-                $.ajax("/api/exercises/" + muscle, {
-                    type: "GET"
-                }).then(function (response) {
-                    appendResults(response)
-                });
-            };
-            // this one doesn't work, why not?
-            if (secondaryMuscle != "Any" && equipReq === "Any") {
-                $.ajax("/api/exercises/" + muscle + "/" + secondaryMuscle + "/anyEquip", {
-                    type: "GET"
-                }).then(function (response) {
-                    appendResults(response)
-                });
-            }
-            if (secondaryMuscle === "Any" && equipReq != "Any") {
-                $.ajax("/api/exercises/" + muscle + "/anySecondary/" + equipReq, {
-                    type: "GET"
-                }).then(function (response) {
-                    appendResults(response)
-                });
-            }
-            if (secondaryMuscle != "Any" && equipReq != "Any") {
-                $.ajax("/api/exercises/" + muscle + "/" + secondaryMuscle + "/" + equipReq, {
-                    type: "GET"
-                }).then(function (response) {
-                    appendResults(response)
-                });
-            }
+    let muscle = $("#muscle").val();
+    let secondaryMuscle = $("#secondaryMuscle").val();
+    let equipReq = $("#equipReq").val();
+
+    if (secondaryMuscle === "Any" && equipReq === "Any") {
+        // search for all exercises where primary muscle = user choice
+        $.ajax("/api/exercises/" + muscle, {
+            type: "GET"
+        }).then(function (response) {
+            appendResults(response)
+        });
+    };
+    if (secondaryMuscle != "Any" && equipReq === "Any") {
+        $.ajax("/api/exercises/" + muscle + "/" + secondaryMuscle + "/anyEquip", {
+            type: "GET"
+        }).then(function (response) {
+            appendResults(response)
         });
     }
-)
+    if (secondaryMuscle === "Any" && equipReq != "Any") {
+        $.ajax("/api/exercises/" + muscle + "/anySecondary/" + equipReq, {
+            type: "GET"
+        }).then(function (response) {
+            appendResults(response)
+        });
+    }
+    if (secondaryMuscle != "Any" && equipReq != "Any") {
+        $.ajax("/api/exercises/" + muscle + "/" + secondaryMuscle + "/" + equipReq, {
+            type: "GET"
+        }).then(function (response) {
+            appendResults(response)
+        });
+    }
+});
 
 let updateForm = $("form.update");
 // UPDATE PROFILE FORM
@@ -64,49 +73,3 @@ updateForm.on("submit", function (event) {
     event.preventDefault();
     console.log("update")
 })
-    //   event.preventDefault();
-
-    //   $(this).find('input[type=checkbox]:not(:checked)').prop('checked', true).val(0);
-
-    //   var userData = {
-    //     email: $("input#email-input").val().trim(),
-    //     password: $("input#password-input").val().trim(),
-    //     dumbbell: $("input#check1").val(),
-    //     barbell: $("input#check2").val(),
-    //     universal: $("input#check3").val(),
-    //     proficiency: "intermediate"
-    //   };
-
-    //   console.log(userData)
-
-    //   if (!userData.email || !userData.password) {
-    //     return;
-    //   }
-    //   // If we have an email and password, run the signUpUser function
-    //   signUpUser(userData.email, userData.password, userData.dumbbell, userData.barbell, userData.universal, userData.proficiency );
-    //   $("input#email-input").val("");
-    //   $("input#password-input").val("");
-    // });
-
-    // // Does a post to the signup route. If successful, we are redirected to the members page
-    // // Otherwise we log any errors
-    // function signUpUser(email, password, dumbbell, barbell, universal, proficiency) {
-    //   $.post("/api/signup", {
-    //     email: email,
-    //     password: password,
-    //     dumbbell: dumbbell,
-    //     barbell: barbell, 
-    //     universal: universal,
-    //     proficiency: proficiency
-    //   })
-    //     .then(function (data) {
-    //       window.location.replace("/members");
-    //       // If there's an error, handle it by throwing up a bootstrap alert
-    //     })
-    //     .catch(handleLoginErr);
-    // }
-
-    // function handleLoginErr(err) {
-    //   $("#alert .msg").text(err.responseJSON);
-    //   $("#alert").fadeIn(500);
-    // }
