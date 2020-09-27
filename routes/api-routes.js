@@ -52,6 +52,14 @@ module.exports = function (app) {
       res.json({
         email: req.user.email,
         id: req.user.id,
+        age: req.user.age,
+        height: req.user.height,
+        weight: req.user.weight,
+        goal: req.user.goal,
+        proficiency: req.user.proficiency,
+        dumbell: req.user.dumbbell,
+        barbell: req.user.barbell,
+        universal: req.user.universal
       });
     }
   });
@@ -134,41 +142,5 @@ module.exports = function (app) {
         res.json(exercises);
       });
   });
-
-  //FIND Workouts based on TYPE
-  // app.get("/api/workouts/:split", function (req, res) {
-  //   // run a different DB request based on each split
-  //   if (req.params.split === "Full Body") {
-  //     // define the groups required for this split
-  //     let inputArray = ["Chest", "Quad", "Back", "Ham", "Bicep", "Calves"];
-  //     let resultArray = [];
-  //     //choose X exercises at random, push to an array
-  //     for (var i = 0; i < inputArray.length; i++ ){
-  //       // let item = db.Exercise.findOne({ where: { main: inputArray[i]} })
-  //       //   resultArray.push(item);
-  //       resultArray.push(inputArray[i])
-  //       // console.log(resultArray)
-  //     }
-  //     // send back the array of objects for front end to assemble into a workout
-  //     res.json(resultArray);
-  //   }
-
-  //   if (req.params.split === "Arnold Split") {
-  //     res.json("You chose ARNOLD");
-  //   }
-  //   if (req.params.split === "Bro Split") {
-  //     res.json("You chose BRO");
-  //   }
-  //   if (req.params.split === "Push Pull Legs") {
-  //     res.json("You chose PPL");
-  //   }
-  //   if (req.params.split === "Upper Lower") {
-  //     res.json("You chose UPPER LOWER");
-  //   }
-  //   if (req.params.split === "Cardio Only") {
-  //     res.json("You chose CARDIO");
-  //   }
-
-  // });
 
 };

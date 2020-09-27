@@ -3,11 +3,7 @@ function personalizePage() {
     $.ajax("/api/user_data/", {
         type: "GET"
     }).then(function (response) {
-        $.ajax("api/personalize/" + response.id, {
-            type: "GET"
-        }).then(function (response) {
-            console.log(response)
-        })
+        console.log(response)
     });
 }
 personalizePage();
@@ -22,7 +18,7 @@ updateForm.on("submit", function (event) {
 
 // EXERCISE SEARCH FORM
 let searchForm = $("form.search")
-
+// Append Exercise Results
 function appendResults(exercise) {
     $("#results").empty();
     for (let i = 0; i < exercise.length; i++) {
@@ -33,6 +29,18 @@ function appendResults(exercise) {
                     <td scope="col">${exercise[i].auxillary}</td>
                     <td scope="col">${exercise[i].equipment}</td>
                     </tr>`);
+    }
+}
+function appendWorkout(resultArray) {
+    $("#workoutGen").empty();
+    for (let i = 0; i < resultArray.length; i++) {
+        $("#workoutGen").append(`<tr>
+                <td scope="col"> 3 </td>
+                <td scope="col">${resultArray[i].exerName}</td>
+                <td scope="col"> 8 - 12 </td>
+                <td scope="col">${resultArray[i].main}</td>
+                <td scope="col">${resultArray[i].alternate}</td>
+                </tr>`);
     }
 }
 
@@ -91,19 +99,19 @@ genForm.on("submit", function (event) {
     let split = $("#split").val();
 
     // determine which array to use
-    if (split === "Full Body"){
+    if (split === "Full Body") {
         input = full
     }
-    if (split === "Arnold Split"){
+    if (split === "Arnold Split") {
         input = arnold
     }
-    if (split === "Bro Split"){
+    if (split === "Bro Split") {
         input = bro
     }
-    if (split === "Push Pull Legs"){
+    if (split === "Push Pull Legs") {
         input = ppl
     }
-    if (split === "Upper Lower"){
+    if (split === "Upper Lower") {
         input = ul
     }
     //The choices from the ajax loop get pushed here
@@ -118,7 +126,7 @@ genForm.on("submit", function (event) {
             // variable to get a random index 
             let random = Math.floor(Math.random() * Math.floor(response.length));
             resultArray.push(response[random])
+            appendWorkout(resultArray)
         });
     }
-    console.log(resultArray)
 })
