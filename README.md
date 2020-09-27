@@ -13,7 +13,7 @@ Future versions will feature the ability to:
 - log workout progress and save it to the database
 - keep track of personal bests
 
-Deployed Site: coming soon!
+Deployed Site: fullstackfitness.herokuapp.com
 
 ## Table of Contents
 
