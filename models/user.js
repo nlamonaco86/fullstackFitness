@@ -9,6 +9,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    sex: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     age: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -45,7 +49,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       default: false
     },
-    universal: {
+    machine: {
       type: DataTypes.BOOLEAN,
       default: false
     },

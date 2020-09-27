@@ -20,13 +20,14 @@ module.exports = function (app) {
   app.post("/api/signup", function (req, res) {
     db.User.create({
       name: req.body.name,
+      sex: req.body.sex,
       age: req.body.age,
       goal: req.body.goal,
       email: req.body.email,
       password: req.body.password,
       dumbbell: req.body.dumbbell,
       barbell: req.body.barbell,
-      universal: req.body.universal,
+      machine: req.body.machine,
       proficiency: req.body.proficiency
     })
       .then(function () {
@@ -55,6 +56,7 @@ module.exports = function (app) {
         name: req.user.name,
         email: req.user.email,
         id: req.user.id,
+        sex: req.user.sex,
         age: req.user.age,
         height: req.user.height,
         weight: req.user.weight,
@@ -62,7 +64,7 @@ module.exports = function (app) {
         proficiency: req.user.proficiency,
         dumbell: req.user.dumbbell,
         barbell: req.user.barbell,
-        universal: req.user.universal,
+        machine: req.user.machine,
         profilePic: req.user.profilePic,
         cloudUploadName: process.env.CLOUDINARY_CLOUDNAME,
         cloudUploadPreset: process.env.CLOUDINARY_UPLOAD_PRESET
