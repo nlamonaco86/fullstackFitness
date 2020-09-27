@@ -46,80 +46,116 @@
         </div>
     </nav>
 
-    <section class="container">
-        <h1 class="display-4">Exercise Database</h3>
-        <h2 class="lead">Search our extensive database for exercises based on your preferences.</h3>
-        <div class="row padtop">
-            <div class="col-lg-3 bg-form shadow">
-                <form class="search">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Primary muscle group:</label>
-                        <select class="form-control" id="muscle">
-                          <option>Chest</option>
-                          <option>Back</option>
-                          <option>Quad</option>
-                          <option>Ham</option>
-                          <option>Core</option>
-                          <option>Bicep</option>
-                          <option>Tricep</option>
-                          <option>Calves</option>
-                          <option>Front Delt</option>
-                          <option>Side Delt</option>
-                          <option>Rear Delt</option>
-                          <option>Trap</option>
-                          <option>Glute</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleFormControlSelect1">Secondary muscle group:</label>
-                        <select class="form-control" id="secondaryMuscle">
-                          <option>Any</option>
-                          <option>Chest</option>
-                          <option>Back</option>
-                          <option>Quad</option>
-                          <option>Ham</option>
-                          <option>Core</option>
-                          <option>Bicep</option>
-                          <option>Tricep</option>
-                          <option>Calves</option>
-                          <option>Front Delt</option>
-                          <option>Side Delt</option>
-                          <option>Rear Delt</option>
-                          <option>Trap</option>
-                          <option>Glute</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleFormControlSelect1">Requires:</label>
-                        <select class="form-control" id="equipReq">
-                          <option>Any</option>
-                          <option>Dumbbell</option>
-                          <option>Barbell</option>
-                          <option>Machine</option>
-                          <option>None</option>
-                        </select>
-                      </div>
-                    <button type="submit" class="btn-lg btn-warning">Submit</button>
-                </form>
+    <section class="container" id="database">
+        <h1 class="display-4">Exercise Database</h1>
+        <h2 class="lead">Search our extensive database for exercises based on your preferences.</h2>
+            <div class="row padtop">
+                <div class="col-lg-3 bg-form shadow">
+                    <form class="search">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Primary muscle group:</label>
+                            <select class="form-control" id="muscle">
+                                <option>Chest</option>
+                                <option>Back</option>
+                                <option>Quad</option>
+                                <option>Ham</option>
+                                <option>Core</option>
+                                <option>Bicep</option>
+                                <option>Tricep</option>
+                                <option>Calves</option>
+                                <option>Front Delt</option>
+                                <option>Side Delt</option>
+                                <option>Rear Delt</option>
+                                <option>Trap</option>
+                                <option>Glute</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Secondary muscle group:</label>
+                            <select class="form-control" id="secondaryMuscle">
+                                <option>Any</option>
+                                <option>Chest</option>
+                                <option>Back</option>
+                                <option>Quad</option>
+                                <option>Ham</option>
+                                <option>Core</option>
+                                <option>Bicep</option>
+                                <option>Tricep</option>
+                                <option>Calves</option>
+                                <option>Front Delt</option>
+                                <option>Side Delt</option>
+                                <option>Rear Delt</option>
+                                <option>Trap</option>
+                                <option>Glute</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Requires:</label>
+                            <select class="form-control" id="equipReq">
+                                <option>Any</option>
+                                <option>Dumbbell</option>
+                                <option>Barbell</option>
+                                <option>Machine</option>
+                                <option>None</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-lg btn-warning">Submit</button>
+                    </form>
+                </div>
+
+                <div class="col-lg-9">
+                <table class="table shadow">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Exercise</th>
+                            <th scope="col">Primary</th>
+                            <th scope="col">Secondary</th>
+                            <th scope="col">Auxillary</th>
+                            <th scope="col">Requires</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-form" id="results">
+                    </tbody>
+                </table>
             </div>
-
-            <table class="table shadow col-lg-9">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Exercise</th>
-                        <th scope="col">Primary</th>
-                        <th scope="col">Secondary</th>
-                        <th scope="col">Auxillary</th>
-                        <th scope="col">Requires</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-form" id="results">
-                </tbody>
-            </table>
         </div>
+            <h1 class="display-4">Workout Generator</h1>
+            <h2 class="lead">Generate a workout based on one of our premade programs.</h2>
+            <div class="row padtop">
+                <div class="col-lg-3 bg-form shadow">
+                    <form class="genWorkout">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Primary muscle group:</label>
+                            <select class="form-control" id="split">
+                                <option>Full Body</option>
+                                <option>Arnold Split</option>
+                                <option>Bro Split</option>
+                                <option>Push Pull Legs</option>
+                                <option>Upper Lower</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-lg btn-warning">Generate</button>
+                    </form>
+                </div>
 
-        <!-- Add to exercise database -->
-        <!-- <div class="d-flex justify-content-center">
+                <div class="col-lg-9">
+                <table class="table shadow">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Row</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Will</th>
+                            <th scope="col">Go</th>
+                            <th scope="col">Here</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-form" id="workoutGen">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+            <!-- Add to exercise database -->
+            <!-- <div class="d-flex justify-content-center">
             <div class="col-lg-6 bg-form shadow">
                 <form class="add">
                     <div class="form-group">
@@ -159,64 +195,66 @@
             </div>
         </div>
     </section> -->
-    <!-- Button trigger modal
+            <!-- Button trigger modal
     <button type="button" class="btn btn-warning pad" data-toggle="modal" data-target="#updateUser">
         Update My Profile
     </button> -->
 
-    <!-- Update Profile Modal -->
-    <div class="modal fade" id="updateUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update My Profile</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="update">
-                        <div class="form-group">
-                            <label for="login">Email address</label>
-                            <input type="email" class="form-control shadow" id="email-input">
+            <!-- Update Profile Modal -->
+            <div class="modal fade" id="updateUser" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Update My Profile</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="check1">
-                                <label class="form-check-label" for="defaultCheck1">
-                                    Dumbbells
-                                </label>
-                            </div>
-                            <div>
-                                <input class="form-check-input" type="checkbox" value="1" id="check2">
-                                <label class="form-check-label" for="defaultCheck1">
-                                    Barbell
-                                </label>
-                            </div>
-                            <div>
-                                <input class="form-check-input" type="checkbox" value="1" id="check3">
-                                <label class="form-check-label" for="defaultCheck1">
-                                    Universal
-                                </label>
-                            </div>
+                        <div class="modal-body">
+                            <form class="update">
+                                <div class="form-group">
+                                    <label for="login">Email address</label>
+                                    <input type="email" class="form-control shadow" id="email-input">
+                                </div>
+                                <div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="1" id="check1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            Dumbbells
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <input class="form-check-input" type="checkbox" value="1" id="check2">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            Barbell
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <input class="form-check-input" type="checkbox" value="1" id="check3">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            Universal
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Proficiency:</label>
+                                    <select class="form-control" id="proficiency">
+                                        <option value="1">Beginner</option>
+                                        <option value="2">Intermediate</option>
+                                        <option value="3">Advanced</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn-lg btn-warning shadow display-4">Update
+                                    Profile</button>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Proficiency:</label>
-                            <select class="form-control" id="proficiency">
-                                <option value="1">Beginner</option>
-                                <option value="2">Intermediate</option>
-                                <option value="3">Advanced</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn-lg btn-warning shadow display-4">Update Profile</button>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
 
-    <footer class="bottomed"><a class="text-dark" href="http://www.github.com/nlamonaco86">Contact</a></footer>
+            <!-- <footer class="bottomed"><a class="text-dark" href="http://www.github.com/nlamonaco86">Contact</a></footer> -->
 </body>
 
 </html>

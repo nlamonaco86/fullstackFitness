@@ -17,7 +17,7 @@ $(document).ready(function () {
       dumbbell: $("input#check1").val(),
       barbell: $("input#check2").val(),
       universal: $("input#check3").val(),
-      proficiency: "intermediate"
+      proficiency: $("select#proficiency").val()
     };
 
     console.log(userData)

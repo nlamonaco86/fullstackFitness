@@ -35,6 +35,7 @@ VALUES
 ('Leg Extension', 'Quad', 'Ham', '', 'Machine', 0, 1, 0, '2020-09-25 22:44:30', '2020-09-25 22:44:30'),
 
 ('Deadlift', 'Ham', 'Trap', 'Core', 'Barbell', 0, 0, 1, '2020-09-25 22:44:30', '2020-09-25 22:44:30'),
+('Trap Bar Deadlift', 'Hinge', 'Trap', 'Forearm', 'Barbell', 0, 0, 1, '2020-09-25 22:44:30', '2020-09-25 22:44:30'),
 ('Stiff-Legged Deadlift', 'Ham', 'Trap', 'Core', 'Barbell', 0, 0, 1, '2020-09-25 22:44:30', '2020-09-25 22:44:30'),
 ('Hamstring Curl', 'Ham', '', '', 'Machine', 0, 0, 0, '2020-09-25 22:44:30', '2020-09-25 22:44:30'),
 ('Hip Thrust', 'Hinge', 'Glute', 'Core', 'Barbell', 0, 0, 1, '2020-09-25 22:44:30', '2020-09-25 22:44:30'),
@@ -58,3 +59,4 @@ VALUES
 
 ('Rack Pull', 'Trap', 'Forearm', '', 'Barbell', 1, 0, 1, '2020-09-25 22:44:30', '2020-09-25 22:44:30'),
 ('Shrug', 'Trap', 'Forearm', '', 'Barbell', 1, 0, 1, '2020-09-25 22:44:30', '2020-09-25 22:44:30')
+

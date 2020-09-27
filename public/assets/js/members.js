@@ -1,16 +1,24 @@
 // GET user info on page load
-function personalizePage(){
-$.ajax("/api/user_data/", {
-    type: "GET"
-}).then(function (response) {
-        $.ajax("api/personalize/" + response.id, {
+function personalizePage() {
+    $.ajax("/api/user_data/", {
         type: "GET"
-    }).then(function(response){
-        console.log(response)
-    })
-});
+    }).then(function (response) {
+        $.ajax("api/personalize/" + response.id, {
+            type: "GET"
+        }).then(function (response) {
+            console.log(response)
+        })
+    });
 }
 personalizePage();
+
+// UPDATE PROFILE FORM
+let updateForm = $("form.update");
+
+updateForm.on("submit", function (event) {
+    event.preventDefault();
+    console.log("update")
+})
 
 // EXERCISE SEARCH FORM
 let searchForm = $("form.search")
@@ -66,10 +74,51 @@ searchForm.on("submit", function (event) {
     }
 });
 
-let updateForm = $("form.update");
-// UPDATE PROFILE FORM
-// When the signup button is clicked, we validate the email and password are not blank
-updateForm.on("submit", function (event) {
+// Workout Generator
+let genForm = $("form.genWorkout")
+
+genForm.on("submit", function (event) {
     event.preventDefault();
-    console.log("update")
+
+    //Array contains each muscle group criteria needed for the eventual workout of that type
+    let full = ["Quad", "Chest", "Ham", "Back", "Bicep", "Calves"]
+    let arnold = ["Chest", "Back", "Quad", "Front Delt", "Bicep", "Tricep", "Ham", "Trap", "Calves"]
+    let bro = ["Chest", "Tricep", "Back", "Bicep", "Front Delt", "Core", "Quad", "Ham", "Trap", "Calves"]
+    let ppl = ["Chest", "Tricep", "Front Delt", "Back", "Core", "Trap", "Bicep", "Quad", "Ham", "Calves"]
+    let ul = ["Chest", "Back", "Front Delt", "Bicep", "Tricep", "Quad", "Ham", "Core", "Calves"]
+
+    // grab desired split from user input
+    let split = $("#split").val();
+
+    // determine which array to use
+    if (split === "Full Body"){
+        input = full
+    }
+    if (split === "Arnold Split"){
+        input = arnold
+    }
+    if (split === "Bro Split"){
+        input = bro
+    }
+    if (split === "Push Pull Legs"){
+        input = ppl
+    }
+    if (split === "Upper Lower"){
+        input = ul
+    }
+    //The choices from the ajax loop get pushed here
+    let resultArray = []
+    // run API request on loop based on input array length
+    for (let i = 0; i < input.length; i++) {
+
+        $.ajax("/api/exercises/" + input[i], {
+            type: "GET"
+
+        }).then((response) => {
+            // variable to get a random index 
+            let random = Math.floor(Math.random() * Math.floor(response.length));
+            resultArray.push(response[random])
+        });
+    }
+    console.log(resultArray)
 })
