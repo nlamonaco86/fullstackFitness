@@ -34,33 +34,8 @@ function appendResults(exercise) {
                     </tr>`);
     }
 }
-function appendWorkout(resultArray, volume, weight) {
+function appendWorkout(resultArray, sets, reps) {
     $("#workoutGen").empty();
-    //don't really like the look of these else/if's, hoping to shorten this by assigning values to the inputs later
-    let sets = 0 
-    if (volume === "Low"){
-        sets = 3
-    }
-    if (volume === "Medium"){
-        sets = 4
-    }
-    else if (volume === "High"){
-        sets = 5
-    }
-    let reps = ""
-    if ( weight === "Light" ){
-        reps = "12 - 15"
-    }
-    if ( weight === "Moderate" ){
-        reps = "8 - 12"
-    }
-    if ( weight === "Heavy" ){
-        reps = "5 - 8"
-    }
-    else if ( weight === "Ego Lifting" ){
-        reps = "1"
-    }
-
     for (let i = 0; i < resultArray.length; i++) {
         $("#workoutGen").append(`<tr>
                 <td scope="col">${sets}</td>
@@ -125,8 +100,8 @@ genForm.on("submit", function (event) {
 
     // grab desired split from user input
     let split = $("#split").val();
-    let volume = $("#volume").val();
-    let weight = $("#weight").val();
+    let sets = $("#volume").val();
+    let reps = $("#weight").val();
 
     // determine which array to use
     if (split === "Full Body") {
@@ -156,7 +131,7 @@ genForm.on("submit", function (event) {
             // variable to get a random index 
             let random = Math.floor(Math.random() * Math.floor(response.length));
             resultArray.push(response[random])
-            appendWorkout(resultArray, volume, weight)
+            appendWorkout(resultArray, sets, reps)
         });
     }
 })
