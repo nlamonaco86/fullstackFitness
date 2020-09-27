@@ -1,12 +1,27 @@
-// GET user info on page load
+// GET user and cloud info on page load
 function personalizePage() {
     $.ajax("/api/user_data/", {
         type: "GET"
     }).then(function (response) {
-        $("#userName").text(response.name)
-        $("#proficiency").text(response.proficiency)
-        $("#canUse").text("Barbell")
-        console.log(response)
+        //fill out the user's profile section
+        $("#profilePic").attr("src", response.profilePic);
+        $("#userName").text(response.name);
+        $("#proficiency").text(response.proficiency);
+        $("#canUse").text("Barbell");
+        console.log(response);
+
+        let blankRow = `<tr class="text-light">
+        <td scope="col">.</td>
+        <td scope="col">.</td>
+        <td scope="col">.</td>
+        <td scope="col">.</td>
+        <td scope="col">.</td>
+    </tr>`
+        //append blank rows to the tables for aesthetics
+        for (let i = 0; i < 6; i++) {
+            $("#results").append(blankRow);
+            $("#workoutGen").append(blankRow);
+        }
     });
 }
 personalizePage();
@@ -16,7 +31,7 @@ let updateForm = $("form.update");
 
 updateForm.on("submit", function (event) {
     event.preventDefault();
-    console.log("update")
+    console.log("update");
 })
 
 // EXERCISE SEARCH FORM
@@ -66,21 +81,21 @@ searchForm.on("submit", function (event) {
         $.ajax("/api/exercises/" + muscle + "/" + secondaryMuscle + "/anyEquip", {
             type: "GET"
         }).then(function (response) {
-            appendResults(response)
+            appendResults(response);
         });
     }
     if (secondaryMuscle === "Any" && equipReq != "Any") {
         $.ajax("/api/exercises/" + muscle + "/anySecondary/" + equipReq, {
             type: "GET"
         }).then(function (response) {
-            appendResults(response)
+            appendResults(response);
         });
     }
     if (secondaryMuscle != "Any" && equipReq != "Any") {
         $.ajax("/api/exercises/" + muscle + "/" + secondaryMuscle + "/" + equipReq, {
             type: "GET"
         }).then(function (response) {
-            appendResults(response)
+            appendResults(response);
         });
     }
 });
@@ -120,7 +135,7 @@ genForm.on("submit", function (event) {
         input = ul
     }
     //The choices from the ajax loop get pushed here
-    let resultArray = []
+    let resultArray = [];
     // run API request on loop based on input array length
     for (let i = 0; i < input.length; i++) {
 
@@ -130,8 +145,8 @@ genForm.on("submit", function (event) {
         }).then((response) => {
             // variable to get a random index 
             let random = Math.floor(Math.random() * Math.floor(response.length));
-            resultArray.push(response[random])
-            appendWorkout(resultArray, sets, reps)
+            resultArray.push(response[random]);
+            appendWorkout(resultArray, sets, reps);
         });
     }
 })

@@ -1,6 +1,8 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+// dotenv module reads environment variables, for eventual use with Cloudinary
+require('dotenv').config();
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -60,8 +62,28 @@ module.exports = function (app) {
         proficiency: req.user.proficiency,
         dumbell: req.user.dumbbell,
         barbell: req.user.barbell,
-        universal: req.user.universal
+        universal: req.user.universal,
+        profilePic: req.user.profilePic,
+        cloudUploadName: process.env.CLOUDINARY_CLOUDNAME,
+        cloudUploadPreset: process.env.CLOUDINARY_UPLOAD_PRESET
       });
+    }
+  });
+  app.put("/api/user_data", (req, res) => {
+    if (!req.user) {
+      // The user is not logged in, send back an empty object
+      res.json({});
+    } else {
+      //UPDATE users profile Pic
+      db.User.update({ profilePic: req.body.profilePic }, {
+        where: { id: req.user.id }
+      })
+        .then(data => {
+          res.json(data);
+        })
+        .catch(err => {
+          res.json({ err });
+        });
     }
   });
   // ********************************** EXERCISES ******************************************** //

@@ -25,7 +25,7 @@ Deployed Site: coming soon!
 Simply clone the repo, and/or visit the deployed page link to begin.
 
 ## Usage
-![repairTracker](./public/assets/demo.gif) 
+![fullstack Fitness](./public/assets/demo.gif) 
 
 
 ## Questions

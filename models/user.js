@@ -53,6 +53,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       default: "beginner"
     },
+    profilePic: {
+      type: DataTypes.STRING,
+      default: "./assets/default.jpg"
+    }
   });
   // Creating a custom method for User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in the database
   User.prototype.validPassword = function(password) {

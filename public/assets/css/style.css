@@ -73,3 +73,11 @@
 .pad{
   padding: 10px;
 }
+
+.padhead{
+  padding-top: 10px
+}
+
+.small{
+  max-width: 240px
+}
