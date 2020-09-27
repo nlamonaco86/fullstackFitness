@@ -4,7 +4,7 @@
 
 fullstack Fitness is a comprehensive workout generator, planner, and exercise database, made using Node.js, Express, MySQL, Sequelize, Passport, JQuery and Bootstrap. 
 
-Users are able to search through an extensive exercise database, filter results by exercise type and equipment required, and view those results on the page.
+Using the mobile-first UI, users are able to search through an extensive exercise database, filter results by exercise type and equipment required, and view those results on the page.
 
 Users are also able to generate a custom workout with randomized exercise selections, based on a plan-type, desired volume and intensity. 
 
@@ -25,8 +25,9 @@ Deployed Site: coming soon!
 Simply clone the repo, and/or visit the deployed page link to begin.
 
 ## Usage
-![fullstack Fitness](./public/assets/demo.gif) 
-
+![fullstack Fitness](./public/assets/ff1.png) 
+![fullstack Fitness](./public/assets/ff2.png) 
+![fullstack Fitness](./public/assets/ff3.png) 
 
 ## Questions
 
