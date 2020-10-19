@@ -1,8 +1,8 @@
 {
-  "nicksPC": {
+  "development": {
     "username": "root",
     "password": "Nicky0416!",
-    "database": "fitness_db",
+    "database": "magic_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
